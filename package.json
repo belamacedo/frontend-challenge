@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "dev:server": "json-server --watch db.json -p 3030 -w -d 500",
+    "dev:server": "json-server --watch db.json -p 3030 -w",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
