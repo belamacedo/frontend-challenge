@@ -53,6 +53,123 @@
       "value": 177.19,
       "date": "2021-01-01T14:09:51Z",
       "isPayed": true
+    },
+    {
+      "id": "8",
+      "name": "Daenerys Targaryen",
+      "username": "daenerys",
+      "title": "Software Engineer II",
+      "value": 150.0,
+      "date": "2021-02-01T14:09:51Z",
+      "isPayed": false
+    },
+    {
+      "id": "9",
+      "name": "Eddard Stark",
+      "username": "nedstark",
+      "title": "Software Engineer I",
+      "value": 120.5,
+      "date": "2021-03-01T14:09:51Z",
+      "isPayed": true
+    },
+    {
+      "id": "10",
+      "name": "Sansa Stark",
+      "username": "sansastark",
+      "title": "Intern",
+      "value": 90.0,
+      "date": "2021-04-01T14:09:51Z",
+      "isPayed": false
+    },
+    {
+      "id": "11",
+      "name": "Arya Stark",
+      "username": "aryastark",
+      "title": "Junior Developer",
+      "value": 110.75,
+      "date": "2021-05-01T14:09:51Z",
+      "isPayed": true
+    },
+    {
+      "id": "12",
+      "name": "Bran Stark",
+      "username": "bran",
+      "title": "Junior Developer",
+      "value": 110.75,
+      "date": "2021-06-01T14:09:51Z",
+      "isPayed": false
+    },
+    {
+      "id": "13",
+      "name": "Petyr Baelish",
+      "username": "petyr",
+      "title": "Project Manager",
+      "value": 200.0,
+      "date": "2021-07-01T14:09:51Z",
+      "isPayed": true
+    },
+    {
+      "id": "14",
+      "name": "Cersei Lannister",
+      "username": "cersei",
+      "title": "CEO",
+      "value": 250.0,
+      "date": "2021-08-01T14:09:51Z",
+      "isPayed": false
+    },
+    {
+      "id": "15",
+      "name": "Jaime Lannister",
+      "username": "jaime",
+      "title": "Senior Developer",
+      "value": 220.0,
+      "date": "2021-09-01T14:09:51Z",
+      "isPayed": true
+    },
+    {
+      "id": "16",
+      "name": "Theon Greyjoy",
+      "username": "theon",
+      "title": "Software Engineer II",
+      "value": 150.5,
+      "date": "2021-10-01T14:09:51Z",
+      "isPayed": false
+    },
+    {
+      "id": "17",
+      "name": "Yara Greyjoy",
+      "username": "yara",
+      "title": "Software Engineer I",
+      "value": 130.0,
+      "date": "2021-11-01T14:09:51Z",
+      "isPayed": true
+    },
+    {
+      "id": "18",
+      "name": "Samwell Tarly",
+      "username": "samwell",
+      "title": "Junior Developer",
+      "value": 115.0,
+      "date": "2021-12-01T14:09:51Z",
+      "isPayed": false
+    },
+    {
+      "id": "19",
+      "name": "Jorah Mormont",
+      "username": "jorah",
+      "title": "Senior Developer",
+      "value": 200.0,
+      "date": "2022-01-01T14:09:51Z",
+      "isPayed": true
+    },
+    {
+      "id": "20",
+      "name": "Gendry",
+      "username": "gendry",
+      "title": "Software Engineer I",
+      "value": 140.0,
+      "date": "2022-02-01T14:09:51Z",
+      "isPayed": false
     }
   ]
 }

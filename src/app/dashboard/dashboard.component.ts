@@ -1,14 +1,12 @@
 import { Component } from '@angular/core';
-import { PaymentsTableComponent } from "./payments-table/payments-table.component";
-import { DashboardHeaderComponent } from "./dashboard-header/dashboard-header.component";
+import { DashboardHeaderComponent } from './dashboard-header/dashboard-header.component';
+import { TableContainerComponent } from './table-container/table-container.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [PaymentsTableComponent, DashboardHeaderComponent],
+  imports: [DashboardHeaderComponent, TableContainerComponent],
   templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.scss'
+  styleUrl: './dashboard.component.scss',
 })
-export class DashboardComponent {
-
-}
+export class DashboardComponent {}
