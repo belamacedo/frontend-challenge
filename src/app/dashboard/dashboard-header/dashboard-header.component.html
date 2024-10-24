@@ -1,5 +1,11 @@
 <header>
   <div class="container">
     <img src="/picpay-logo.svg" alt="Logo da PicPay" class="logo" />
+    <div class="user-info">
+      <span>Olá, {{ userName }}!</span>
+      <div class="avatar">
+        <img [src]="randomUserAvatar" alt="Avatar do usuário" />
+      </div>
+    </div>
   </div>
 </header>

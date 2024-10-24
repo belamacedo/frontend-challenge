@@ -56,12 +56,10 @@ export class PaymentsTableComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
   }
 
-
   loadPayments() {
     this.paymentsService.getPayments().subscribe(
       (payments: IPayment[]) => {
         this.dataSource.data = payments;
-        this.paginator.pageSize = 10;
       },
       (error) => {
         console.error('Erro ao carregar os pagamentos', error);
