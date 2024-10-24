@@ -1,0 +1,48 @@
+.row-even {
+    background: #F4F4F4;
+  }
+  
+  .row-odd {
+    background: #FFFFFF;
+  }
+  
+  .mat-mdc-row .mat-mdc-cell, .mat-mdc-table {
+   border-color:#EAECF0;
+  }
+
+  .c-table {
+    background: #F9FAFB;
+    border-color: #EAECF0;
+  }
+
+  .button-edit {
+    color: #667085; 
+  
+    &:hover {
+    color: darken(#667085, 10%);
+    }
+  }
+  
+  .button-delete {
+   color: #FF5858; 
+
+  
+    &:hover {
+     color: darken(#FF5858, 10%);
+    }
+  }
+  
+  .button-edit,
+  .button-delete {
+ 
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+  }
+  
+
+  .mat-icon {
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+  }

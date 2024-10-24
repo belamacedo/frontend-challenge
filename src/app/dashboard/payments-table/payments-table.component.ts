@@ -1,11 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator, MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { IPayment } from '../../interface/IPayment';
 import { CommonModule } from '@angular/common';
 import { PaymentsService } from '../../services/payment.service';
 import { MatCheckbox } from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-payments-table',
@@ -16,6 +17,7 @@ import { FormsModule } from '@angular/forms';
     MatCheckbox,
     CommonModule,
     FormsModule,
+    MatIconModule
   ],
   templateUrl: './payments-table.component.html',
   styleUrls: ['./payments-table.component.scss'],
@@ -79,7 +81,11 @@ export class PaymentsTableComponent implements OnInit {
     );
   }
 
-  handlePageEvent(pageEvent: PageEvent) {
-    console.log('testando', pageEvent)
+  
+
+  isEven(row: IPayment): boolean {
+    const index = this.dataSource.data.indexOf(row);
+    return index % 2 === 0;
   }
+  
 }
