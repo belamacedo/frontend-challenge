@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { IPayment } from '../../interface/IPayment';
@@ -18,9 +18,9 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
   ],
   templateUrl: './payments-table.component.html',
-  styleUrl: './payments-table.component.scss',
+  styleUrls: ['./payments-table.component.scss'],
 })
-export class PaymentsTableComponent {
+export class PaymentsTableComponent implements OnInit {
   columns = [
     { key: 'name', label: 'Nome' },
     { key: 'username', label: 'Usuário' },
@@ -37,17 +37,26 @@ export class PaymentsTableComponent {
   constructor(private paymentsService: PaymentsService) {}
 
   ngOnInit(): void {
-    this.loadPayments();
-  }
-
-  loadPayments(): void {
     this.paymentsService.getPayments().subscribe(
       (payments: IPayment[]) => {
         this.dataSource.data = payments;
-        console.log(this.dataSource.data);
       },
       (error) => {
         console.error('Erro ao carregar os pagamentos', error);
+      },
+    );
+  }
+
+  deletePayment(paymentId: number): void {
+    console.log(paymentId);
+    this.paymentsService.deletePayment(paymentId).subscribe(
+      () => {
+        this.dataSource.data = this.dataSource.data.filter(
+          (payment) => payment.id !== paymentId,
+        );
+      },
+      (error) => {
+        console.error('Erro ao excluir o pagamento:', error);
       },
     );
   }

@@ -7,23 +7,23 @@ import { IPayment } from '../interface/IPayment';
   providedIn: 'root',
 })
 export class PaymentsService {
-  private apiUrl = 'http://localhost:3030/tasks';
+  private api = 'http://localhost:3030/tasks';
 
   constructor(private http: HttpClient) {}
 
   getPayments(): Observable<IPayment[]> {
-    return this.http.get<IPayment[]>(this.apiUrl);
+    return this.http.get<IPayment[]>(this.api);
   }
 
   addPayment(payment: IPayment): Observable<IPayment> {
-    return this.http.post<IPayment>(this.apiUrl, payment);
+    return this.http.post<IPayment>(this.api, payment);
   }
 
   updatePayment(payment: IPayment): Observable<IPayment> {
-    return this.http.put<IPayment>(`${this.apiUrl}/${payment.id}`, payment);
+    return this.http.put<IPayment>(`${this.api}/${payment.id}`, payment);
   }
 
-  deletePayment(id: string): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  deletePayment(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.api}/${id}`);
   }
 }
