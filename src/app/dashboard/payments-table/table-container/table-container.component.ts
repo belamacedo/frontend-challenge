@@ -5,6 +5,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTableDataSource } from '@angular/material/table';
 import { IPayment } from '../../../interface/IPayment';
 import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-table-container',
@@ -14,6 +15,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatInputModule,
     ReactiveFormsModule,
     MatIconModule,
+    MatButtonModule,
   ],
   templateUrl: './table-container.component.html',
   styleUrl: './table-container.component.scss',

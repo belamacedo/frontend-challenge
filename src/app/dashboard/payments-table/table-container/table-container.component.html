@@ -1,11 +1,14 @@
-<div class="search-container">
-  <mat-form-field appearance="outline">
-    <mat-label>Pesquisar</mat-label>
-    <input
-      matInput
-      (input)="applyFilter($event)"
-      placeholder="Digite para pesquisar"
-    />
-    <mat-icon matSuffix>search</mat-icon>
-  </mat-form-field>
+<div class="container">
+  <div class="search-container">
+    <mat-form-field appearance="outline">
+      <mat-label>Pesquisar</mat-label>
+      <input
+        matInput
+        (input)="applyFilter($event)"
+        placeholder="Digite para pesquisar"
+      />
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+  </div>
+  <button mat-fab extended><mat-icon>add</mat-icon>Adicionar</button>
 </div>

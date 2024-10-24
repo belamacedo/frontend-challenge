@@ -1,1 +1,25 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+}
 
+.mat-accent.mat-mdc-fab,
+.mat-accent.mat-mdc-mini-fab {
+  --mdc-fab-container-color: #21c25e;
+  --mdc-fab-small-container-color: #21c25e;
+  --mat-fab-foreground-color: #ffffff;
+  --mat-fab-state-layer-color: #ffffff;
+  --mat-fab-small-foreground-color: #ffffff;
+  --mat-fab-small-state-layer-color: #ffffff;
+}
+
+.mat-mdc-extended-fab {
+  padding: 0 60px;
+}
+
+.mat-mdc-extended-fab .mdc-button__label + .mat-icon,
+[dir="rtl"] .mat-mdc-extended-fab .mdc-button__label + .material-icons,
+.mat-mdc-extended-fab > .mat-icon,
+.mat-mdc-extended-fab > .material-icons {
+  margin-right: 0;
+}
