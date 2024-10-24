@@ -1,12 +1,12 @@
 import { NgModule } from "@angular/core";
 import { SharedModule } from "./shared/shared.module";
-import { DashboardComponent } from "./dashboard/dashboard.component";
+import { DashboardModule } from "./dashboard/dashboard.module";
 
 @NgModule({
   declarations: [],
   imports: [
     SharedModule,
-    DashboardComponent 
+    DashboardModule
   ],
   providers: [],
 })
