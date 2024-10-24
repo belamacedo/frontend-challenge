@@ -1,14 +1,67 @@
 {
-    "tasks":[
-        {
-            "id": 5, 
-            "name": "Anthea Pundy", 
-            "username": "apundy4", 
-            "title": "Software Engineer III", 
-            "value": 177.19, 
-            "date": "2021-01-01T14:09:51Z", 
-            "image": "https://robohash.org/quiaautomnis.png?size=150x150&set=set1", 
-            "isPayed": true 
-        }
-    ]
+  "tasks": [
+    {
+      "id": 1,
+      "name": "Anthea Pundy",
+      "username": "apundy4",
+      "title": "Software Engineer III",
+      "value": 177.19,
+      "date": "2021-01-01T14:09:51Z",
+      "isPayed": true
+    },
+    {
+      "id": 2,
+      "name": "Anthea Pundy",
+      "username": "apundy4",
+      "title": "Software Engineer III",
+      "value": 177.19,
+      "date": "2021-01-01T14:09:51Z",
+      "isPayed": true
+    },
+    {
+      "id": 3,
+      "name": "Isabela Macedo",
+      "username": "isabelamacedo",
+      "title": "Software Engineer III",
+      "value": 177.19,
+      "date": "2021-01-01T14:09:51Z",
+      "isPayed": false
+    },
+    {
+      "id": 4,
+      "name": "Ana Oliveira",
+      "username": "anaoliveira",
+      "title": "Software Engineer III",
+      "value": 177.19,
+      "date": "2021-01-01T14:09:51Z",
+      "isPayed": false
+    },
+    {
+      "id": 5,
+      "name": "Ricardo Silva",
+      "username": "ricardosilva",
+      "title": "Software Engineer III",
+      "value": 177.19,
+      "date": "2021-01-01T14:09:51Z",
+      "isPayed": true
+    },
+    {
+      "id": 6,
+      "name": "Karoline Batista",
+      "username": "karolinebatista",
+      "title": "Software Engineer III",
+      "value": 177.19,
+      "date": "2021-01-01T14:09:51Z",
+      "isPayed": false
+    },
+    {
+      "id": 7,
+      "name": "Tyrion Lannister",
+      "username": "tyrionlannister",
+      "title": "Software Engineer III",
+      "value": 177.19,
+      "date": "2021-01-01T14:09:51Z",
+      "isPayed": true
+    }
+  ]
 }
