@@ -52,7 +52,13 @@
     width: 95%;
   }
 
-  .mdc-checkbox__native-control:enabled:checked~.mdc-checkbox__background, .mdc-checkbox__native-control:enabled:indeterminate~.mdc-checkbox__background {
-    border-color: green;
-    background-color: green;
-  }
+
+  .mat-accent.mat-mdc-checkbox {
+    --mdc-checkbox-selected-pressed-icon-color: #21c25e;
+    --mdc-checkbox-selected-focus-icon-color: #21c25e;
+    --mdc-checkbox-selected-hover-icon-color: #21c25e;
+    --mdc-checkbox-selected-icon-color: #21c25e;
+    --mdc-checkbox-selected-focus-state-layer-color: #21c25e;
+    --mdc-checkbox-selected-hover-state-layer-color: #21c25e;
+    --mdc-checkbox-unselected-pressed-state-layer-color: #21c25e;
+}
