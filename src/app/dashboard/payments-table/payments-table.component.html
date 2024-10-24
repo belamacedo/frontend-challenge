@@ -1,7 +1,8 @@
-<div class="container">
+
+  <app-table-container [dataSource]="dataSource"></app-table-container>
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource || []" class="table">
-      <ng-container class="c-table" *ngFor="let column of columns" [matColumnDef]="column.key" class="c-table">
+      <ng-container class="c-table" *ngFor="let column of columns" [matColumnDef]="column.key">
         <th mat-header-cell *matHeaderCellDef >{{ column.label }}</th>
         <td mat-cell *matCellDef="let element">
           <ng-container *ngIf="column.key !== 'actions'; else actionCell">
@@ -11,7 +12,6 @@
             <ng-container *ngIf="column.key === 'isPayed'">
               <mat-checkbox
                 [(ngModel)]="element.isPayed"
-                disabled
               ></mat-checkbox>
             </ng-container>
             <ng-container
@@ -42,7 +42,8 @@
       [pageSizeOptions]="[5, 10, 25, 100]"
       [pageIndex]="currentPage"
       aria-label="Select page"
+      class="c-paginator"
     >
     </mat-paginator>
   </div>
-</div>
+

@@ -7,6 +7,7 @@ import { PaymentsService } from '../../services/payment.service';
 import { MatCheckbox } from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
+import { TableContainerComponent } from "./table-container/table-container.component";
 
 @Component({
   selector: 'app-payments-table',
@@ -17,8 +18,9 @@ import { MatIconModule } from '@angular/material/icon';
     MatCheckbox,
     CommonModule,
     FormsModule,
-    MatIconModule
-  ],
+    MatIconModule,
+    TableContainerComponent
+],
   templateUrl: './payments-table.component.html',
   styleUrls: ['./payments-table.component.scss'],
 })

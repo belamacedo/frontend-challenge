@@ -13,6 +13,7 @@
   .c-table {
     background: #F9FAFB;
     border-color: #EAECF0;
+    max-width: 80%;
   }
 
   .button-edit {
@@ -24,7 +25,7 @@
   }
   
   .button-delete {
-   color: #FF5858; 
+   color: #f33b3b; 
 
   
     &:hover {
@@ -45,4 +46,13 @@
     border: none;
     cursor: pointer;
     background-color: transparent;
+  }
+
+  .mat-paginator, .mat-mdc-paginator-container {
+    width: 95%;
+  }
+
+  .mdc-checkbox__native-control:enabled:checked~.mdc-checkbox__background, .mdc-checkbox__native-control:enabled:indeterminate~.mdc-checkbox__background {
+    border-color: green;
+    background-color: green;
   }
