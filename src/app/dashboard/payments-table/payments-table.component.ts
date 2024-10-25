@@ -10,6 +10,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { TableContainerComponent } from './table-container/table-container.component';
 import { MatDialog } from '@angular/material/dialog';
 import { PaymentModalComponent } from '../payment-modal/payment-modal.component';
+import { MatSort, MatSortModule, Sort } from '@angular/material/sort';
+import { LiveAnnouncer } from '@angular/cdk/a11y';
 
 @Component({
   selector: 'app-payments-table',
@@ -22,6 +24,7 @@ import { PaymentModalComponent } from '../payment-modal/payment-modal.component'
     FormsModule,
     MatIconModule,
     TableContainerComponent,
+    MatSortModule,
   ],
   templateUrl: './payments-table.component.html',
   styleUrls: ['./payments-table.component.scss'],
@@ -43,10 +46,12 @@ export class PaymentsTableComponent implements OnInit {
   dataSource = new MatTableDataSource<IPayment>([]);
 
   @ViewChild('paginator') paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
 
   constructor(
     private paymentsService: PaymentsService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private _liveAnnouncer: LiveAnnouncer
   ) {}
 
   ngOnInit(): void {
@@ -55,6 +60,7 @@ export class PaymentsTableComponent implements OnInit {
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
   loadPayments() {
@@ -92,5 +98,11 @@ export class PaymentsTableComponent implements OnInit {
         this.dataSource._updateChangeSubscription();
       }
     });
+  }
+
+  announceSortChange(sortState: Sort) {
+    return sortState.direction
+      ? this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`)
+      : this._liveAnnouncer.announce('Sorting cleared');
   }
 }

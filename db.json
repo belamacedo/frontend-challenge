@@ -2,7 +2,7 @@
   "tasks": [
     {
       "id": "1",
-      "name": "Anthea Pundy3",
+      "name": "Anthea Pundy",
       "username": "apundy4",
       "title": "Software Engineer III",
       "value": 177.19,
@@ -169,6 +169,78 @@
       "title": "Designer",
       "value": 45555,
       "date": "2024-10-24T03:00:00.000Z",
+      "isPayed": true
+    },
+    {
+      "id": "23",
+      "name": "Nome Teste",
+      "username": "user123",
+      "title": "FrontEnd",
+      "value": 332,
+      "date": "2024-10-16T03:00:00.000Z",
+      "isPayed": true
+    },
+    {
+      "id": 24,
+      "name": "testando12",
+      "username": "testando123",
+      "title": "gfgfggfg",
+      "value": 434,
+      "date": "2024-10-15T03:00:00.000Z",
+      "isPayed": false
+    },
+    {
+      "id": 25,
+      "name": "Izabel Cristina",
+      "username": "iza1313",
+      "title": "RH",
+      "value": 323,
+      "date": "2024-10-22T03:00:00.000Z",
+      "isPayed": true
+    },
+    {
+      "id": 26,
+      "name": "Iza",
+      "username": "iza12",
+      "title": "RH",
+      "value": 433,
+      "date": "2024-10-16T03:00:00.000Z",
+      "isPayed": true
+    },
+    {
+      "id": 27,
+      "name": "Felipe Macedo",
+      "username": "felipemacedo",
+      "title": "RH",
+      "value": 433,
+      "date": "2024-10-16T03:00:00.000Z",
+      "isPayed": false
+    },
+    {
+      "id": 28,
+      "name": "Felipe Macedo",
+      "username": "felipemacedo",
+      "title": "RH",
+      "value": 433,
+      "date": "2024-10-16T03:00:00.000Z",
+      "isPayed": false
+    },
+    {
+      "id": 29,
+      "name": "Felipe Macedo32",
+      "username": "felipemacedo",
+      "title": "RH",
+      "value": 433,
+      "date": "2024-10-16T03:00:00.000Z",
+      "isPayed": false
+    },
+    {
+      "id": 30,
+      "name": "Isa1234",
+      "username": "isa1234",
+      "title": "Front end Jr",
+      "value": 1234,
+      "date": "2024-10-20T03:00:00.000Z",
       "isPayed": true
     }
   ]

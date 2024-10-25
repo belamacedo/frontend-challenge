@@ -93,45 +93,36 @@ export class PaymentModalComponent {
 
   onSubmit(): void {
     this.paymentForm.markAllAsTouched();
-    if (this.paymentForm.valid) {
-      const formValue = this.paymentForm.value;
+    if (!this.paymentForm.valid) return;
 
-      if (this.isEdit && this.data.payment) {
-        const updatedPayment: IPayment = {
-          ...this.data.payment,
-          ...formValue,
-        };
-        this.paymentsService.updatePayment(updatedPayment).subscribe({
-          next: (savedPayment) => {
-            const index = this.data.dataSource.data.findIndex(
-              (p) => p.id === savedPayment.id
-            );
+    const formValue = this.paymentForm.value;
+    const lastId =
+      this.data.dataSource.data.length > 0
+        ? Math.max(...this.data.dataSource.data.map((payment) => payment.id))
+        : 0;
+
+    const paymentToSave: IPayment = {
+      ...formValue,
+      id: this.isEdit ? this.data.payment.id : lastId + 1,
+    };
+
+    const action = this.isEdit
+      ? this.paymentsService.updatePayment(paymentToSave)
+      : this.paymentsService.addPayment(paymentToSave);
+
+    action.subscribe({
+      next: (savedPayment) => {
+        if (this.isEdit) {
+          const index = this.data.dataSource.data.findIndex(
+            (p) => p.id === savedPayment.id
+          );
+          if (index !== -1) {
             this.data.dataSource.data[index] = savedPayment;
-            this.data.dataSource._updateChangeSubscription();
-            this.dialogRef.close(savedPayment);
-          },
-        });
-      } else {
-        const lastId =
-          this.data.dataSource.data.length > 0
-            ? Math.max(
-                ...this.data.dataSource.data.map((payment) => payment.id)
-              )
-            : 0;
-
-        const newPayment: IPayment = {
-          ...formValue,
-          id: lastId + 1,
-        };
-
-        this.paymentsService.addPayment(newPayment).subscribe({
-          next: (savedPayment) => {
-            this.data.dataSource.data.push(savedPayment);
-            this.data.dataSource._updateChangeSubscription();
-            this.dialogRef.close(savedPayment);
-          },
-        });
-      }
-    }
+          }
+        }
+        this.data.dataSource._updateChangeSubscription();
+        this.dialogRef.close(savedPayment);
+      },
+    });
   }
 }
