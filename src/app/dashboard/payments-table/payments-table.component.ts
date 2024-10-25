@@ -7,7 +7,9 @@ import { PaymentsService } from '../../services/payment.service';
 import { MatCheckbox } from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
-import { TableContainerComponent } from "./table-container/table-container.component";
+import { TableContainerComponent } from './table-container/table-container.component';
+import { MatDialog } from '@angular/material/dialog';
+import { PaymentModalComponent } from '../payment-modal/payment-modal.component';
 
 @Component({
   selector: 'app-payments-table',
@@ -19,13 +21,11 @@ import { TableContainerComponent } from "./table-container/table-container.compo
     CommonModule,
     FormsModule,
     MatIconModule,
-    TableContainerComponent
-],
+    TableContainerComponent,
+  ],
   templateUrl: './payments-table.component.html',
   styleUrls: ['./payments-table.component.scss'],
 })
-
-
 export class PaymentsTableComponent implements OnInit {
   currentPage = 0;
 
@@ -39,14 +39,15 @@ export class PaymentsTableComponent implements OnInit {
     { key: 'actions', label: 'Ações' },
   ];
 
-
   displayedColumns = this.columns.map((column) => column.key);
   dataSource = new MatTableDataSource<IPayment>([]);
 
   @ViewChild('paginator') paginator!: MatPaginator;
 
-
-  constructor(private paymentsService: PaymentsService) {}
+  constructor(
+    private paymentsService: PaymentsService,
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.loadPayments();
@@ -63,7 +64,7 @@ export class PaymentsTableComponent implements OnInit {
       },
       (error) => {
         console.error('Erro ao carregar os pagamentos', error);
-      },
+      }
     );
   }
 
@@ -72,20 +73,34 @@ export class PaymentsTableComponent implements OnInit {
     this.paymentsService.deletePayment(paymentId).subscribe(
       () => {
         this.dataSource.data = this.dataSource.data.filter(
-          (payment) => payment.id !== paymentId,
+          (payment) => payment.id !== paymentId
         );
       },
       (error) => {
         console.error('Erro ao excluir o pagamento:', error);
-      },
+      }
     );
   }
-
-  
 
   isEven(row: IPayment): boolean {
     const index = this.dataSource.data.indexOf(row);
     return index % 2 === 0;
   }
-  
+
+  openPaymentModal(payment: IPayment): void {
+    const dialogRef = this.dialog.open(PaymentModalComponent, {
+      data: {
+        dataSource: this.dataSource,
+        isEdit: true,
+        payment: payment,
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.dataSource.data.push(result);
+        this.dataSource._updateChangeSubscription();
+      }
+    });
+  }
 }

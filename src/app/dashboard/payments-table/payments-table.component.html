@@ -1,48 +1,60 @@
-
-  <app-table-container [dataSource]="dataSource"></app-table-container>
-  <div class="mat-elevation-z8">
-    <table mat-table [dataSource]="dataSource || []" class="table">
-      <ng-container class="c-table" *ngFor="let column of columns" [matColumnDef]="column.key">
-        <th mat-header-cell *matHeaderCellDef >{{ column.label }}</th>
-        <td mat-cell *matCellDef="let element">
-          <ng-container *ngIf="column.key !== 'actions'; else actionCell">
-            <ng-container *ngIf="column.key === 'date'">
-              {{ element[column.key] | date: "dd/MM/yyyy" }}
-            </ng-container>
-            <ng-container *ngIf="column.key === 'isPayed'">
-              <mat-checkbox
-                [(ngModel)]="element.isPayed"
-              ></mat-checkbox>
-            </ng-container>
-            <ng-container
-              *ngIf="column.key !== 'date' && column.key !== 'isPayed'"
-            >
-              {{ element[column.key] }}
-            </ng-container>
-          </ng-container>
-          <ng-template #actionCell>
-            <button mat-button class="button-edit">
-              <mat-icon>edit</mat-icon> 
-            </button>
-            <button mat-button class="button-delete" (click)="deletePayment(element.id)">
-              <mat-icon>delete</mat-icon>
-            </button>
-          </ng-template>
-        </td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns" [ngClass]="{'row-even': isEven(row), 'row-odd': !isEven(row)}"></tr>
-    </table>
-
-    <mat-paginator
-    #paginator
-      [pageSize]="10"
-      [pageSizeOptions]="[5, 10, 25, 100]"
-      [pageIndex]="currentPage"
-      aria-label="Select page"
-      class="c-paginator"
+<app-table-container [dataSource]="dataSource"></app-table-container>
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource || []" class="table">
+    <ng-container
+      class="c-table"
+      *ngFor="let column of columns"
+      [matColumnDef]="column.key"
     >
-    </mat-paginator>
-  </div>
+      <th mat-header-cell *matHeaderCellDef>{{ column.label }}</th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="column.key !== 'actions'; else actionCell">
+          <ng-container *ngIf="column.key === 'date'">
+            {{ element[column.key] | date : "dd/MM/yyyy" }}
+          </ng-container>
+          <ng-container *ngIf="column.key === 'isPayed'">
+            <mat-checkbox [(ngModel)]="element.isPayed"></mat-checkbox>
+          </ng-container>
+          <ng-container
+            *ngIf="column.key !== 'date' && column.key !== 'isPayed'"
+          >
+            {{ element[column.key] }}
+          </ng-container>
+        </ng-container>
+        <ng-template #actionCell>
+          <button
+            mat-button
+            class="button-edit"
+            (click)="openPaymentModal(element)"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button
+            mat-button
+            class="button-delete"
+            (click)="deletePayment(element.id)"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </ng-template>
+      </td>
+    </ng-container>
 
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr
+      mat-row
+      *matRowDef="let row; columns: displayedColumns"
+      [ngClass]="{ 'row-even': isEven(row), 'row-odd': !isEven(row) }"
+    ></tr>
+  </table>
+
+  <mat-paginator
+    #paginator
+    [pageSize]="10"
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    [pageIndex]="currentPage"
+    aria-label="Select page"
+    class="c-paginator"
+  >
+  </mat-paginator>
+</div>

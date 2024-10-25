@@ -1,19 +1,19 @@
 <mat-dialog-content>
-  <h4>{{ data ? "Editar" : "Adicionar" }}</h4>
+  <h4>{{ data.isEdit ? "Editar" : "Adicionar" }}</h4>
 
   <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
     <div class="container">
       <mat-form-field appearance="outline">
         <mat-label>Nome</mat-label>
         <input matInput formControlName="name" />
-        <mat-error *ngIf="paymentForm.get('name')?.hasError('required')">
+        <mat-error *ngIf="paymentForm.get('name')?.hasError('')">
           O nome é obrigatório.
         </mat-error>
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Usuário</mat-label>
         <input matInput formControlName="username" />
-        <mat-error *ngIf="paymentForm.get('username')?.hasError('required')">
+        <mat-error *ngIf="paymentForm.get('username')?.hasError('')">
           O usuário é obrigatório.
         </mat-error>
       </mat-form-field>
@@ -23,7 +23,7 @@
       <mat-form-field appearance="outline">
         <mat-label>Título</mat-label>
         <input matInput formControlName="title" />
-        <mat-error *ngIf="paymentForm.get('title')?.hasError('required')">
+        <mat-error *ngIf="paymentForm.get('title')?.hasError('')">
           O título é obrigatório.
         </mat-error>
       </mat-form-field>
@@ -37,10 +37,14 @@
     </div>
 
     <div class="date-container">
-      <mat-form-field appearance="outline">
-        <mat-label>Data</mat-label>
+      <mat-form-field>
+        <mat-label>Choose a date</mat-label>
         <input matInput [matDatepicker]="picker" formControlName="date" />
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
         <mat-error *ngIf="paymentForm.get('date')?.hasError('')">
           A data é obrigatória.
@@ -55,7 +59,7 @@
     <div mat-dialog-actions>
       <button mat-button type="button" mat-dialog-close>Cancelar</button>
       <button mat-button type="submit">
-        {{ data ? "Salvar Alterações" : "Adicionar" }}
+        {{ data.isEdit ? "Salvar Alterações" : "Adicionar" }}
       </button>
     </div>
   </form>

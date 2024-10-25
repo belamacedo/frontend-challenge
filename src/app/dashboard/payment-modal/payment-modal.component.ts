@@ -1,32 +1,35 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Inject,
+  Input,
+} from '@angular/core';
 import {
   FormBuilder,
-  FormControl,
   FormGroup,
   FormsModule,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { MatNativeDateModule } from '@angular/material/core';
+import {
+  MatNativeDateModule,
+  provideNativeDateAdapter,
+} from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {
   MAT_DIALOG_DATA,
-  MatDialogContainer,
   MatDialogContent,
   MatDialogModule,
   MatDialogRef,
-  MatDialogTitle,
 } from '@angular/material/dialog';
-import {
-  MatFormFieldControl,
-  MatFormFieldModule,
-} from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { IPayment } from '../../interface/IPayment';
 import { PaymentsService } from '../../services/payment.service';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-payment-modal',
@@ -46,56 +49,93 @@ import { PaymentsService } from '../../services/payment.service';
   ],
   templateUrl: './payment-modal.component.html',
   styleUrl: './payment-modal.component.scss',
+  providers: [provideNativeDateAdapter()],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PaymentModalComponent {
-  paymentForm: FormGroup;
-  selectedFile: File | null = null;
+  paymentForm!: FormGroup;
+  isEdit: boolean = false;
+  @Input() dataSource!: IPayment;
 
   constructor(
     private fb: FormBuilder,
     private paymentsService: PaymentsService,
     private dialogRef: MatDialogRef<PaymentModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: IPayment
-  ) {
-    this.paymentForm = this.fb.group({
-      id: ['', Validators.required],
+    @Inject(MAT_DIALOG_DATA)
+    public data: {
+      dataSource: MatTableDataSource<IPayment>;
+      isEdit: boolean;
+      payment: IPayment;
+    }
+  ) {}
+
+  ngOnInit(): void {
+    this.createForm();
+
+    if (this.data) {
+      this.isEdit = this.data.isEdit;
+      if (this.isEdit && this.data.payment) {
+        this.paymentForm.patchValue(this.data.payment);
+      }
+    }
+  }
+
+  createForm(): FormGroup {
+    return (this.paymentForm = this.fb.group({
       name: ['', Validators.required],
       username: ['', Validators.required],
       title: ['', Validators.required],
       value: ['', Validators.required],
       date: ['', Validators.required],
       isPayed: [false],
-    });
-
-    console.log(this.paymentForm);
-  }
-
-  ngOnInit(): void {
-    if (this.data) {
-      this.paymentForm.patchValue(this.data);
-    }
-
-    this.paymentForm.valueChanges.subscribe((value) => {
-      console.log('Valores do formulário:', value);
-      console.log(this.paymentForm.valid);
-    });
-  }
-
-  onFileSelect(event: Event): void {
-    const input = event.target as HTMLInputElement;
-    if (input.files?.length) {
-      this.selectedFile = input.files[0];
-    }
+    }));
   }
 
   onSubmit(): void {
-    const paymentData = {
-      id: this.data?.id || Math.floor(Math.random() * 1000),
-      ...this.paymentForm.value,
-    };
-    console.log(paymentData);
-    this.paymentsService.addPayment(paymentData);
-    this.dialogRef.close(paymentData);
+    this.paymentForm.markAllAsTouched();
+    if (this.paymentForm.valid) {
+      const formValue = this.paymentForm.value;
+
+      if (this.isEdit && this.data.payment) {
+        const updatedPayment: IPayment = {
+          ...this.data.payment,
+          ...formValue,
+        };
+        console.log('Updating payment with ID:', updatedPayment.id);
+        console.log('Updating payment with ID:', updatedPayment);
+        this.paymentsService.updatePayment(updatedPayment).subscribe({
+          next: (savedPayment) => {
+            console.log('Updating payment with ID:', savedPayment.id);
+
+            const index = this.data.dataSource.data.findIndex(
+              (p) => p.id === savedPayment.id
+            );
+            this.data.dataSource.data[index] = savedPayment;
+            this.data.dataSource._updateChangeSubscription();
+            this.dialogRef.close(savedPayment);
+          },
+        });
+      } else {
+        const lastId =
+          this.data.dataSource.data.length > 0
+            ? Math.max(
+                ...this.data.dataSource.data.map((payment) => payment.id)
+              )
+            : 0;
+
+        const newPayment: IPayment = {
+          ...formValue,
+          id: lastId + 1,
+        };
+
+        this.paymentsService.addPayment(newPayment).subscribe({
+          next: (savedPayment) => {
+            this.data.dataSource.data.push(savedPayment);
+            this.data.dataSource._updateChangeSubscription();
+            this.dialogRef.close(savedPayment);
+          },
+        });
+      }
+    }
   }
 }

@@ -1,9 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import {
-  MatFormFieldControl,
-  MatFormFieldModule,
-} from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableDataSource } from '@angular/material/table';
 import { IPayment } from '../../../interface/IPayment';
@@ -37,10 +34,15 @@ export class TableContainerComponent {
   }
 
   openPaymentModal(): void {
-    const dialogRef = this.dialog.open(PaymentModalComponent);
+    const dialogRef = this.dialog.open(PaymentModalComponent, {
+      data: { dataSource: this.dataSource, isEdit: false },
+    });
 
     dialogRef.afterClosed().subscribe((result) => {
-      this.dataSource.data.push(result);
+      if (result) {
+        this.dataSource.data.push(result);
+        this.dataSource._updateChangeSubscription();
+      }
     });
   }
 }
