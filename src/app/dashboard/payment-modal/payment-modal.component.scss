@@ -44,3 +44,7 @@ input.example-right-align::-webkit-outer-spin-button,
 input.example-right-align::-webkit-inner-spin-button {
   display: none;
 }
+
+.cancel-button {
+  --mdc-text-button-label-text-color: #1a1b1f;
+}
