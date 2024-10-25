@@ -101,12 +101,8 @@ export class PaymentModalComponent {
           ...this.data.payment,
           ...formValue,
         };
-        console.log('Updating payment with ID:', updatedPayment.id);
-        console.log('Updating payment with ID:', updatedPayment);
         this.paymentsService.updatePayment(updatedPayment).subscribe({
           next: (savedPayment) => {
-            console.log('Updating payment with ID:', savedPayment.id);
-
             const index = this.data.dataSource.data.findIndex(
               (p) => p.id === savedPayment.id
             );

@@ -27,13 +27,27 @@
           O título é obrigatório.
         </mat-error>
       </mat-form-field>
-      <mat-form-field appearance="outline">
+      <mat-form-field floatLabel="always">
+        <mat-label>Valor</mat-label>
+        <input
+          matInput
+          type="number"
+          formControlName="value"
+          class="example-right-align"
+        />
+        <span matTextPrefix>R$</span>
+        <span matTextSuffix>.00</span>
+        <mat-error *ngIf="paymentForm.get('value')?.hasError('')">
+          O valor é obrigatório.
+        </mat-error>
+      </mat-form-field>
+      <!-- <mat-form-field appearance="outline">
         <mat-label>Valor</mat-label>
         <input matInput formControlName="value" type="number" />
         <mat-error *ngIf="paymentForm.get('value')?.hasError('')">
           O valor é obrigatório.
         </mat-error>
-      </mat-form-field>
+      </mat-form-field> -->
     </div>
 
     <div class="date-container">

@@ -58,28 +58,18 @@ export class PaymentsTableComponent implements OnInit {
   }
 
   loadPayments() {
-    this.paymentsService.getPayments().subscribe(
-      (payments: IPayment[]) => {
-        this.dataSource.data = payments;
-      },
-      (error) => {
-        console.error('Erro ao carregar os pagamentos', error);
-      }
-    );
+    this.paymentsService.getPayments().subscribe((payments: IPayment[]) => {
+      this.dataSource.data = payments;
+    });
   }
 
   deletePayment(paymentId: number): void {
     console.log(paymentId);
-    this.paymentsService.deletePayment(paymentId).subscribe(
-      () => {
-        this.dataSource.data = this.dataSource.data.filter(
-          (payment) => payment.id !== paymentId
-        );
-      },
-      (error) => {
-        console.error('Erro ao excluir o pagamento:', error);
-      }
-    );
+    this.paymentsService.deletePayment(paymentId).subscribe(() => {
+      this.dataSource.data = this.dataSource.data.filter(
+        (payment) => payment.id !== paymentId
+      );
+    });
   }
 
   isEven(row: IPayment): boolean {

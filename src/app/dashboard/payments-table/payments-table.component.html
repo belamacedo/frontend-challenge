@@ -15,12 +15,20 @@
           <ng-container *ngIf="column.key === 'isPayed'">
             <mat-checkbox [(ngModel)]="element.isPayed"></mat-checkbox>
           </ng-container>
-          <ng-container
-            *ngIf="column.key !== 'date' && column.key !== 'isPayed'"
-          >
-            {{ element[column.key] }}
+          <ng-container *ngIf="column.key === 'value'">
+            {{ element[column.key] | currency : "BRL" : "symbol" : "1.2-2" }}
           </ng-container>
         </ng-container>
+        <ng-container
+          *ngIf="
+            column.key !== 'date' &&
+            column.key !== 'isPayed' &&
+            column.key !== 'value'
+          "
+        >
+          {{ element[column.key] }}
+        </ng-container>
+
         <ng-template #actionCell>
           <button
             mat-button
