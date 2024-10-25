@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  gap: 6px;
+}
+
+.date-container {
+  display: flex;
+  gap: 40px;
+}
+
+.c-switch {
+  margin-top: 14px;
+}
+
+.mat-accent.mat-mdc-slide-toggle {
+  --mdc-switch-selected-focus-state-layer-color: #21c25e;
+  --mdc-switch-selected-handle-color: #ffffff;
+  --mdc-switch-selected-hover-state-layer-color: #21c25e;
+  --mdc-switch-selected-pressed-state-layer-color: #21c25e;
+  --mdc-switch-selected-focus-handle-color: #e0e0ff;
+  --mdc-switch-selected-hover-handle-color: #e0e0ff;
+  --mdc-switch-selected-pressed-handle-color: #e0e0ff;
+  --mdc-switch-selected-focus-track-color: #21c25e;
+  --mdc-switch-selected-hover-track-color: #21c25e;
+  --mdc-switch-selected-pressed-track-color: #21c25e;
+  --mdc-switch-selected-track-color: #21c25e;
+  --mdc-switch-selected-icon-color: #1a1b1f;
+  --mat-switch-track-outline-color: #74777f;
+  --mat-switch-disabled-unselected-track-outline-color: #1a1b1f;
+  --mat-switch-label-text-color: #1a1b1f;
+}
