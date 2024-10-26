@@ -5,9 +5,18 @@
     </div>
     <div class="user-info">
       <span>Olá, {{ userName }}!</span>
-      <div class="avatar">
-        <img [src]="randomUserAvatar" alt="Avatar do usuário" />
-      </div>
+      <button class="c-button" [matMenuTriggerFor]="userMenu">
+        <div class="avatar">
+          <img [src]="randomUserAvatar" alt="Avatar do usuário" />
+        </div>
+      </button>
     </div>
   </div>
+
+  <mat-menu #userMenu="matMenu">
+    <button mat-menu-item (click)="navigateToAccounts()">
+      Gerenciamento de Usuários
+    </button>
+    <button mat-menu-item (click)="logout()">Sair</button>
+  </mat-menu>
 </header>

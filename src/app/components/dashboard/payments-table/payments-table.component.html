@@ -1,4 +1,11 @@
-<app-table-container [dataSource]="dataSource"></app-table-container>
+<!-- <app-table-container [dataSource]="dataSource"></app-table-container> -->
+<div class="container">
+  <app-search [data]="dataSource"></app-search>
+  <app-button
+    [buttonText]="'Adicionar Pagamento'"
+    (buttonClick)="openPaymentModal(null, false)"
+  ></app-button>
+</div>
 <div class="mat-elevation-z8">
   <table
     mat-table

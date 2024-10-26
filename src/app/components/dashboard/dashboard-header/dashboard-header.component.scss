@@ -11,6 +11,7 @@ header {
 .container {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   flex-wrap: wrap;
 }
 
@@ -19,19 +20,24 @@ header {
   align-items: center;
   flex-wrap: wrap;
   gap: 28px;
-}
 
-.avatar {
-  width: 40px;
-  height: 40px;
-  border: 1px solid #abadb3;
-  border-radius: 50%;
-  overflow: hidden;
-  margin-right: 8px;
-}
+  .avatar {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #abadb3;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 8px;
+    cursor: pointer;
 
-.avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+.c-button {
+  background-color: transparent;
+  border: none;
 }

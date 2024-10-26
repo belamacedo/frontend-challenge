@@ -35,6 +35,7 @@ export class AuthService {
 
   logout() {
     localStorage.setItem('isAuthenticated', 'false');
+    this.router.navigate(['/login']);
   }
 
   isAuthenticated(): Observable<boolean> {

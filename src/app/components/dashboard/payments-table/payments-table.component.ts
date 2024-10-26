@@ -7,11 +7,12 @@ import { PaymentsService } from '../../../core/services/payment.service';
 import { MatCheckbox } from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
-import { TableContainerComponent } from './table-container/table-container.component';
 import { MatDialog } from '@angular/material/dialog';
 import { PaymentModalComponent } from '../payment-modal/payment-modal.component';
 import { MatSort, MatSortModule, Sort } from '@angular/material/sort';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
+import { SearchComponent } from '../../shared/search/search.component';
+import { ButtonComponent } from '../../shared/button/button.component';
 
 @Component({
   selector: 'app-payments-table',
@@ -23,8 +24,9 @@ import { LiveAnnouncer } from '@angular/cdk/a11y';
     CommonModule,
     FormsModule,
     MatIconModule,
-    TableContainerComponent,
     MatSortModule,
+    SearchComponent,
+    ButtonComponent,
   ],
   templateUrl: './payments-table.component.html',
   styleUrls: ['./payments-table.component.scss'],
@@ -82,11 +84,14 @@ export class PaymentsTableComponent implements OnInit {
     return index % 2 === 0;
   }
 
-  openPaymentModal(payment: IPayment): void {
+  openPaymentModal(
+    payment: IPayment | null = null,
+    isEdit: boolean = true
+  ): void {
     const dialogRef = this.dialog.open(PaymentModalComponent, {
       data: {
         dataSource: this.dataSource,
-        isEdit: true,
+        isEdit: isEdit,
         payment: payment,
       },
     });
