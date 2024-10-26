@@ -1,21 +1,21 @@
-import { Component, ViewChild } from '@angular/core';
-import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
-import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { IPayment } from '../../../interfaces/IPayment';
 import { CommonModule } from '@angular/common';
-import { PaymentsService } from '../../../core/services/payment.service';
-import { MatCheckbox } from '@angular/material/checkbox';
+import { Component, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { MatCheckbox } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
-import { MatDialog } from '@angular/material/dialog';
-import { PaymentModalComponent } from '../payment-modal/payment-modal.component';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule, Sort } from '@angular/material/sort';
-import { LiveAnnouncer } from '@angular/cdk/a11y';
-import { SearchComponent } from '../../shared/search/search.component';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { ButtonComponent } from '../../shared/button/button.component';
+import { SearchComponent } from '../../shared/search/search.component';
+import { IAccount } from '../../../interfaces/IAccount';
+import { AccountService } from '../../../core/services/account.service';
+import { MatDialog } from '@angular/material/dialog';
+import { LiveAnnouncer } from '@angular/cdk/a11y';
+import { AccountModalComponent } from '../account-modal/account-modal.component';
 
 @Component({
-  selector: 'app-payments-table',
+  selector: 'app-accounts-table',
   standalone: true,
   imports: [
     MatTableModule,
@@ -28,35 +28,34 @@ import { ButtonComponent } from '../../shared/button/button.component';
     SearchComponent,
     ButtonComponent,
   ],
-  templateUrl: './payments-table.component.html',
-  styleUrls: ['./payments-table.component.scss'],
+  templateUrl: './accounts-table.component.html',
+  styleUrl: './accounts-table.component.scss',
 })
-export class PaymentsTableComponent {
+export class AccountsTableComponent {
   currentPage = 0;
+
   columns = [
     { key: 'name', label: 'Nome' },
     { key: 'username', label: 'Usuário' },
-    { key: 'title', label: 'Título' },
-    { key: 'date', label: 'Data' },
-    { key: 'isPayed', label: 'Pago' },
-    { key: 'value', label: 'Valor' },
+    { key: 'email', label: 'Email' },
+    { key: 'password', label: 'Senha' },
     { key: 'actions', label: 'Ações' },
   ];
 
   displayedColumns = this.columns.map((column) => column.key);
-  dataSource = new MatTableDataSource<IPayment>([]);
+  dataSource = new MatTableDataSource<IAccount>([]);
 
   @ViewChild('paginator') paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor(
-    private paymentsService: PaymentsService,
+    private accountsService: AccountService,
     private dialog: MatDialog,
     private _liveAnnouncer: LiveAnnouncer
   ) {}
 
   ngOnInit(): void {
-    this.loadPayments();
+    this.loadAccounts();
   }
 
   ngAfterViewInit() {
@@ -64,34 +63,34 @@ export class PaymentsTableComponent {
     this.dataSource.sort = this.sort;
   }
 
-  loadPayments() {
-    this.paymentsService.getPayments().subscribe((payments: IPayment[]) => {
-      this.dataSource.data = payments;
+  loadAccounts() {
+    this.accountsService.getAccounts().subscribe((accounts: IAccount[]) => {
+      this.dataSource.data = accounts;
     });
   }
 
-  deletePayment(paymentId: number): void {
-    this.paymentsService.deletePayment(paymentId).subscribe(() => {
+  deleteAccount(accountId: number): void {
+    this.accountsService.deleteAccount(accountId).subscribe(() => {
       this.dataSource.data = this.dataSource.data.filter(
-        (payment) => payment.id !== paymentId
+        (account) => account.id !== accountId
       );
     });
   }
 
-  isEven(row: IPayment): boolean {
+  isEven(row: IAccount): boolean {
     const index = this.dataSource.data.indexOf(row);
     return index % 2 === 0;
   }
 
-  openPaymentModal(
-    payment: IPayment | null = null,
+  openAccountModal(
+    account: IAccount | null = null,
     isEdit: boolean = true
   ): void {
-    const dialogRef = this.dialog.open(PaymentModalComponent, {
+    const dialogRef = this.dialog.open(AccountModalComponent, {
       data: {
         dataSource: this.dataSource,
         isEdit: isEdit,
-        payment: payment,
+        account: account,
       },
     });
 

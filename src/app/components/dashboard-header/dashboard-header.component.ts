@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { RandomUserService } from '../../../core/services/random-user.service';
+import { RandomUserService } from '../../core/services/random-user.service';
 
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { Router } from '@angular/router';
-import { AuthService } from '../../../core/services/auth.service';
+import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-dashboard-header',
@@ -37,6 +37,10 @@ export class DashboardHeaderComponent implements OnInit {
 
   navigateToAccounts() {
     this.router.navigate(['/accounts']);
+  }
+
+  navigateToPayments() {
+    this.router.navigate(['/dashboard']);
   }
 
   logout() {

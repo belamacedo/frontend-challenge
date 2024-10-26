@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DashboardHeaderComponent } from './dashboard-header/dashboard-header.component';
+import { DashboardHeaderComponent } from '../dashboard-header/dashboard-header.component';
 import { PaymentsTableComponent } from './payments-table/payments-table.component';
 
 @Component({

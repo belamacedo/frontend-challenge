@@ -1,4 +1,14 @@
 {
+  "accounts": [
+    {
+      "id": "1",
+      "name": "Isabela Macedo",
+      "username": "isamacedo",
+      "email": "usuario@gmail.com",
+      "password": "usuario",
+      "img": "teste"
+    }
+  ],
   "tasks": [
     {
       "id": "1",
