@@ -6,7 +6,8 @@
       "username": "isamacedo",
       "email": "usuario@gmail.com",
       "password": "usuario",
-      "img": "teste"
+      "img": "teste",
+      "isAdmin": true
     }
   ],
   "tasks": [

@@ -20,19 +20,19 @@ export class DashboardHeaderComponent implements OnInit {
     private router: Router
   ) {}
 
-  randomUserAvatar: string = '';
+  avatar: string = '';
   userName: string = '';
 
   ngOnInit() {
-    this.getRandomUser();
+    this.getCurrentUser();
   }
 
-  getRandomUser() {
-    this.randomUserService.getRandomUser().subscribe((data) => {
-      const user = data.results[0];
-      this.randomUserAvatar = user.picture.thumbnail;
-      this.userName = `${user.name.first} ${user.name.last}`;
-    });
+  getCurrentUser() {
+    const currentUser = this.authService.getCurrentUser();
+    if (currentUser) {
+      this.userName = `${currentUser.name}`;
+      this.avatar = currentUser.img;
+    }
   }
 
   navigateToAccounts() {
