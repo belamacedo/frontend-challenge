@@ -7,7 +7,14 @@
       <span>Olá, {{ userName }}!</span>
       <button class="c-button" [matMenuTriggerFor]="userMenu">
         <div class="avatar">
-          <img [src]="avatar" alt="Avatar do usuário" />
+          <img
+            [src]="avatar"
+            alt="Avatar do usuário"
+            *ngIf="avatar; else defaultAvatar"
+          />
+          <ng-template #defaultAvatar>
+            <img src="assets/default-avatar.png" alt="Avatar padrão" />
+          </ng-template>
         </div>
       </button>
     </div>

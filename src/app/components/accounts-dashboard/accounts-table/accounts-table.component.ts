@@ -92,6 +92,9 @@ export class AccountsTableComponent {
         isEdit: isEdit,
         account: account,
       },
+      panelClass: 'custom-dialog-container',
+      height: '500px',
+      width: '400px',
     });
 
     dialogRef.afterClosed().subscribe((result) => {

@@ -1,1 +1,87 @@
-<p>account-modal works!</p>
+<mat-dialog-content>
+  <h4>{{ data.isEdit ? "Editar" : "Adicionar" }}</h4>
+
+  <div class="image-upload">
+    <div class="image-preview">
+      <img [src]="userImage ? userImage : '/default-avatar.jpg'" alt="Avatar" />
+    </div>
+    <input type="file" (change)="onFileSelected($event)" accept="image/*" />
+  </div>
+
+  <form [formGroup]="accountForm" (ngSubmit)="onSubmit()">
+    <div class="container">
+      <mat-form-field appearance="outline">
+        <mat-label>Nome</mat-label>
+        <input matInput formControlName="name" />
+        <mat-error *ngIf="accountForm.get('name')?.hasError('required')">
+          O nome é obrigatório.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Usuário</mat-label>
+        <input matInput formControlName="username" />
+
+        <mat-error
+          *ngIf="accountForm.get('username')?.hasError('usernameTaken')"
+        >
+          Nome de usuário já está em uso.
+        </mat-error>
+        <mat-error *ngIf="accountForm.get('username')?.hasError('required')">
+          O usuário é obrigatório.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Digite seu email</mat-label>
+        <input
+          matInput
+          placeholder="email@example.com"
+          formControlName="email"
+          required
+        />
+        <mat-error *ngIf="accountForm.get('email')?.hasError('emailTaken')">
+          Email já está em uso.
+        </mat-error>
+        <mat-error *ngIf="accountForm.get('email')?.hasError('email')">
+          Formato de email inválido.
+        </mat-error>
+
+        <mat-error *ngIf="accountForm.get('email')?.hasError('required')">
+          O email é obrigatório.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Digite sua senha</mat-label>
+        <input
+          matInput
+          formControlName="password"
+          [type]="hide() ? 'password' : 'text'"
+        />
+        <button
+          matSuffix
+          mat-icon-button
+          type="button"
+          (click)="clickEvent($event)"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide()"
+        >
+          <mat-icon>{{ hide() ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+        <mat-error *ngIf="accountForm.get('password')?.hasError('required')">
+          A senha é obrigatória.
+        </mat-error>
+      </mat-form-field>
+
+      <div mat-dialog-actions>
+        <button mat-button type="button" mat-dialog-close class="cancel-button">
+          Cancelar
+        </button>
+        <button mat-button type="submit" [disabled]="accountForm.invalid">
+          {{ data.isEdit ? "Salvar Alterações" : "Adicionar" }}
+        </button>
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>

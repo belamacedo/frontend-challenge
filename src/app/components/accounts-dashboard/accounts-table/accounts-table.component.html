@@ -18,18 +18,15 @@
         {{ column.label }}
       </th>
       <td mat-cell *matCellDef="let element">
-        <!-- Se a coluna for 'password', exibe a senha mascarada -->
         <ng-container *ngIf="column.key === 'password'; else defaultCell">
           {{ "*".repeat(element[column.key]?.length || 0) }}
         </ng-container>
 
-        <!-- Bloco padrão para exibir os dados de outras colunas e ações -->
         <ng-template #defaultCell>
           <ng-container *ngIf="column.key !== 'actions'; else actionCell">
             {{ element[column.key] }}
           </ng-container>
 
-          <!-- Bloco de ações (botões de editar e excluir) -->
           <ng-template #actionCell>
             <button
               mat-button
