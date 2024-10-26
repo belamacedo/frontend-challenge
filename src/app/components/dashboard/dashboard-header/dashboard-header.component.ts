@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-import { RandomUserService } from '../../services/random-user.service';
+import { RandomUserService } from '../../../core/services/random-user.service';
 
 @Component({
   selector: 'app-dashboard-header',

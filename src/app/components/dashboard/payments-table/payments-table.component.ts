@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { IPayment } from '../../interface/IPayment';
+import { IPayment } from '../../../interfaces/IPayment';
 import { CommonModule } from '@angular/common';
-import { PaymentsService } from '../../services/payment.service';
+import { PaymentsService } from '../../../core/services/payment.service';
 import { MatCheckbox } from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';

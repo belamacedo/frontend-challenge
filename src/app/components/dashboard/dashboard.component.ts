@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { DashboardHeaderComponent } from './dashboard-header/dashboard-header.component';
-import { PaymentsTableComponent } from "./payments-table/payments-table.component";
+import { PaymentsTableComponent } from './payments-table/payments-table.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,7 +9,4 @@ import { PaymentsTableComponent } from "./payments-table/payments-table.componen
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
 })
-export class DashboardComponent {
-
-  
-}
+export class DashboardComponent {}

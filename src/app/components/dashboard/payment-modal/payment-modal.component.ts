@@ -27,8 +27,8 @@ import {
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { IPayment } from '../../interface/IPayment';
-import { PaymentsService } from '../../services/payment.service';
+import { IPayment } from '../../../interfaces/IPayment';
+import { PaymentsService } from '../../../core/services/payment.service';
 import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
