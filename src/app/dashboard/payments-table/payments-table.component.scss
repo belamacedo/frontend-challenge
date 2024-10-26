@@ -1,64 +1,60 @@
 .row-even {
-    background: #F4F4F4;
-  }
-  
-  .row-odd {
-    background: #FFFFFF;
-  }
-  
-  .mat-mdc-row .mat-mdc-cell, .mat-mdc-table {
-   border-color:#EAECF0;
-  }
+  background: #f4f4f4;
+}
 
-  .c-table {
-    background: #F9FAFB;
-    border-color: #EAECF0;
-    max-width: 80%;
-  }
+.row-odd {
+  background: #ffffff;
+}
 
-  .button-edit {
-    color: #667085; 
-  
-    &:hover {
+.mat-mdc-row .mat-mdc-cell,
+.mat-mdc-table {
+  border-color: #eaecf0;
+}
+
+.button-edit {
+  color: #667085;
+
+  &:hover {
     color: darken(#667085, 10%);
-    }
   }
-  
-  .button-delete {
-   color: #f33b3b; 
+}
 
-  
-    &:hover {
-     color: darken(#FF5858, 10%);
-    }
+.button-delete {
+  color: #f33b3b;
+
+  &:hover {
+    color: darken(#ff5858, 10%);
   }
-  
-  .button-edit,
-  .button-delete {
- 
-    border: none;
-    cursor: pointer;
-    background-color: transparent;
-  }
-  
+}
 
-  .mat-icon {
-    border: none;
-    cursor: pointer;
-    background-color: transparent;
-  }
+.button-edit,
+.button-delete {
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+}
 
-  .mat-paginator, .mat-mdc-paginator-container {
-    width: 95%;
-  }
+.mat-icon {
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+}
 
+.mat-paginator,
+.mat-mdc-paginator-container {
+  width: 95%;
+}
 
-  .mat-accent.mat-mdc-checkbox {
-    --mdc-checkbox-selected-pressed-icon-color: #21c25e;
-    --mdc-checkbox-selected-focus-icon-color: #21c25e;
-    --mdc-checkbox-selected-hover-icon-color: #21c25e;
-    --mdc-checkbox-selected-icon-color: #21c25e;
-    --mdc-checkbox-selected-focus-state-layer-color: #21c25e;
-    --mdc-checkbox-selected-hover-state-layer-color: #21c25e;
-    --mdc-checkbox-unselected-pressed-state-layer-color: #21c25e;
+.mat-accent.mat-mdc-checkbox {
+  --mdc-checkbox-selected-pressed-icon-color: #21c25e;
+  --mdc-checkbox-selected-focus-icon-color: #21c25e;
+  --mdc-checkbox-selected-hover-icon-color: #21c25e;
+  --mdc-checkbox-selected-icon-color: #21c25e;
+  --mdc-checkbox-selected-focus-state-layer-color: #21c25e;
+  --mdc-checkbox-selected-hover-state-layer-color: #21c25e;
+  --mdc-checkbox-unselected-pressed-state-layer-color: #21c25e;
+}
+
+.container {
+  padding-bottom: 30px; /* Espaço específico para o paginator */
 }

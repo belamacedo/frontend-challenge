@@ -7,11 +7,7 @@
     matSort
     (matSortChange)="announceSortChange($event)"
   >
-    <ng-container
-      class="c-table"
-      *ngFor="let column of columns"
-      [matColumnDef]="column.key"
-    >
+    <ng-container *ngFor="let column of columns" [matColumnDef]="column.key">
       <th mat-header-cell mat-sort-header *matHeaderCellDef>
         {{ column.label }}
       </th>
@@ -70,7 +66,6 @@
     [pageSizeOptions]="[5, 10, 25, 100]"
     [pageIndex]="currentPage"
     aria-label="Select page"
-    class="c-paginator"
   >
   </mat-paginator>
 </div>

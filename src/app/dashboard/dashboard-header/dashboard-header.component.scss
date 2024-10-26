@@ -7,15 +7,12 @@ header {
 .logo {
   width: 141.94px;
   height: 46px;
+  margin-right: 16px;
 }
 
 .container {
   display: flex;
   justify-content: space-between;
-}
-
-.logo {
-  margin-right: 16px;
 }
 
 .user-info {

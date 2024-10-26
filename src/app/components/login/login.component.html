@@ -1,0 +1,26 @@
+<div class="login-container">
+  <mat-card class="login-card">
+    <mat-card-content>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="c-form">
+        <img src="/picpay-logo.svg" alt="Avatar do usuário" class="logo" />
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" type="email" required />
+          <mat-error *ngIf="loginForm.get('email')?.invalid">
+            Por favor, insira um email válido.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Senha</mat-label>
+          <input matInput formControlName="password" type="password" required />
+          <mat-error *ngIf="loginForm.get('password')?.invalid">
+            A senha é obrigatória.
+          </mat-error>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit">Entrar</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
