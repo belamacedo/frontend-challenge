@@ -28,6 +28,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { of } from 'rxjs';
+import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-account-modal',
@@ -57,6 +58,7 @@ export class AccountModalComponent {
   constructor(
     private fb: FormBuilder,
     private accountService: AccountService,
+    private authService: AuthService,
     private dialogRef: MatDialogRef<AccountModalComponent>,
     private cdr: ChangeDetectorRef,
     @Inject(MAT_DIALOG_DATA)
@@ -163,6 +165,10 @@ export class AccountModalComponent {
 
     action.subscribe({
       next: (savedAccount) => {
+        const currentUser = this.authService.getCurrentUser();
+        if (currentUser && currentUser.id === savedAccount.id) {
+          this.authService.updateUser(savedAccount);
+        }
         this.dialogRef.close(savedAccount);
       },
     });

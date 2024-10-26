@@ -5,6 +5,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { Router } from '@angular/router';
 import { AuthService } from '../../core/services/auth.service';
 import { CommonModule } from '@angular/common';
+import { Observable } from 'rxjs';
+import { IAccount } from '../../interfaces/IAccount';
 
 @Component({
   selector: 'app-dashboard-header',
@@ -14,21 +16,22 @@ import { CommonModule } from '@angular/common';
   styleUrl: './dashboard-header.component.scss',
 })
 export class DashboardHeaderComponent {
-  constructor(private authService: AuthService, private router: Router) {}
+  currentUser$: Observable<IAccount | null>;
+  constructor(private authService: AuthService, private router: Router) {
+    this.currentUser$ = this.authService.getCurrentUserObservable();
+  }
 
   avatar: string = '';
   userName: string = '';
 
   ngOnInit() {
-    this.getCurrentUser();
-  }
-
-  getCurrentUser() {
-    const currentUser = this.authService.getCurrentUser();
-    if (currentUser) {
-      this.userName = `${currentUser.name}`;
-      this.avatar = currentUser.img;
-    }
+    this.currentUser$.subscribe((currentUser) => {
+      console.log(currentUser);
+      if (currentUser) {
+        this.userName = currentUser.name.trim();
+        this.avatar = currentUser.img;
+      }
+    });
   }
 
   navigateToAccounts() {

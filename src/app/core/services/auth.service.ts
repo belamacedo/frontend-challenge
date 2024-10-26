@@ -8,6 +8,7 @@ import { IAccount } from '../../interfaces/IAccount';
   providedIn: 'root',
 })
 export class AuthService {
+  private userSubject = new BehaviorSubject<IAccount | null>(null);
   private isAuthenticated$ = new BehaviorSubject<boolean>(false);
   private api = 'http://localhost:3030/accounts';
 
@@ -15,6 +16,9 @@ export class AuthService {
     const savedAuthState = localStorage.getItem('isAuthenticated');
     if (savedAuthState) {
       this.isAuthenticated$.next(JSON.parse(savedAuthState));
+      const savedUser = localStorage.getItem('currentUser');
+      const user = savedUser ? JSON.parse(savedUser) : null;
+      this.userSubject.next(user);
     }
   }
 
@@ -25,6 +29,7 @@ export class AuthService {
           (account) => account.email === email && account.password === password
         );
         if (validUser) {
+          this.userSubject.next(validUser as IAccount);
           this.isAuthenticated$.next(true);
           localStorage.setItem('isAuthenticated', 'true');
           localStorage.setItem('currentUser', JSON.stringify(validUser));
@@ -39,6 +44,7 @@ export class AuthService {
   logout() {
     localStorage.setItem('isAuthenticated', 'false');
     localStorage.removeItem('currentUser');
+    this.userSubject.next(null);
     this.router.navigate(['/login']);
   }
 
@@ -47,6 +53,15 @@ export class AuthService {
   }
 
   getCurrentUser(): IAccount | null {
-    return JSON.parse(localStorage.getItem('currentUser') || 'null');
+    return this.userSubject.value;
+  }
+
+  updateUser(updatedUser: IAccount) {
+    this.userSubject.next(updatedUser);
+    localStorage.setItem('currentUser', JSON.stringify(updatedUser));
+  }
+
+  getCurrentUserObservable(): Observable<IAccount | null> {
+    return this.userSubject.asObservable();
   }
 }
