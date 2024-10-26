@@ -96,7 +96,7 @@ export class PaymentsTableComponent {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.dataSource.data.push(result);
+        this.loadPayments();
         this.dataSource._updateChangeSubscription();
       }
     });

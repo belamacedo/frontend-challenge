@@ -112,15 +112,6 @@ export class PaymentModalComponent {
 
     action.subscribe({
       next: (savedPayment) => {
-        if (this.isEdit) {
-          const index = this.data.dataSource.data.findIndex(
-            (p) => p.id === savedPayment.id
-          );
-          if (index !== -1) {
-            this.data.dataSource.data[index] = savedPayment;
-          }
-        }
-        this.data.dataSource._updateChangeSubscription();
         this.dialogRef.close(savedPayment);
       },
     });

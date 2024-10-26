@@ -163,15 +163,6 @@ export class AccountModalComponent {
 
     action.subscribe({
       next: (savedAccount) => {
-        if (this.isEdit) {
-          const index = this.data.dataSource.data.findIndex(
-            (p) => p.id === savedAccount.id
-          );
-          if (index !== -1) {
-            this.data.dataSource.data[index] = savedAccount;
-          }
-        }
-        this.data.dataSource._updateChangeSubscription();
         this.dialogRef.close(savedAccount);
       },
     });
