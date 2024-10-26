@@ -20,7 +20,6 @@ export class DashboardHeaderComponent implements OnInit {
 
   getRandomUser() {
     this.randomUserService.getRandomUser().subscribe((data) => {
-      console.log(data);
       const user = data.results[0];
       this.randomUserAvatar = user.picture.thumbnail;
       this.userName = `${user.name.first} ${user.name.last}`;

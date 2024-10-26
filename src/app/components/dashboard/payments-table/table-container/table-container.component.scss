@@ -1,6 +1,8 @@
 .container {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
 .mat-accent.mat-mdc-fab,
@@ -22,4 +24,14 @@
 .mat-mdc-extended-fab > .mat-icon,
 .mat-mdc-extended-fab > .material-icons {
   margin-right: 0;
+}
+
+.c-button {
+  margin-bottom: 20px;
+}
+
+@media (max-width: 578px) {
+  .mat-mdc-extended-fab {
+    padding: 0 60px;
+  }
 }

@@ -11,11 +11,13 @@ header {
 .container {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .user-info {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 28px;
 }
 

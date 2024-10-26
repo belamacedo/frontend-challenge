@@ -70,7 +70,6 @@ export class PaymentsTableComponent implements OnInit {
   }
 
   deletePayment(paymentId: number): void {
-    console.log(paymentId);
     this.paymentsService.deletePayment(paymentId).subscribe(() => {
       this.dataSource.data = this.dataSource.data.filter(
         (payment) => payment.id !== paymentId
