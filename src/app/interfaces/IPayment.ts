@@ -5,4 +5,5 @@ export interface IPayment {
   title: string;
   date: Date;
   isPayed: boolean;
+  originalIndex?: number;
 }

@@ -69,7 +69,7 @@ export class PaymentModalComponent {
     }
   ) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.createForm();
 
     if (this.data) {
@@ -80,7 +80,7 @@ export class PaymentModalComponent {
     }
   }
 
-  createForm(): FormGroup {
+  createForm() {
     return (this.paymentForm = this.fb.group({
       name: ['', Validators.required],
       username: ['', Validators.required],
@@ -91,7 +91,7 @@ export class PaymentModalComponent {
     }));
   }
 
-  onSubmit(): void {
+  onSubmit() {
     this.paymentForm.markAllAsTouched();
     if (!this.paymentForm.valid) return;
 

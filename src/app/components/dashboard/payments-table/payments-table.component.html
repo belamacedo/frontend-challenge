@@ -61,8 +61,8 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr
       mat-row
-      *matRowDef="let row; columns: displayedColumns"
-      [ngClass]="{ 'row-even': isEven(row), 'row-odd': !isEven(row) }"
+      *matRowDef="let row; let i = index; columns: displayedColumns"
+      [ngClass]="getRowClass(i)"
     ></tr>
   </table>
 

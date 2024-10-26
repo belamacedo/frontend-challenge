@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { RandomUserService } from '../../core/services/random-user.service';
+import { Component } from '@angular/core';
 
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
@@ -14,12 +13,8 @@ import { CommonModule } from '@angular/common';
   templateUrl: './dashboard-header.component.html',
   styleUrl: './dashboard-header.component.scss',
 })
-export class DashboardHeaderComponent implements OnInit {
-  constructor(
-    private randomUserService: RandomUserService,
-    private authService: AuthService,
-    private router: Router
-  ) {}
+export class DashboardHeaderComponent {
+  constructor(private authService: AuthService, private router: Router) {}
 
   avatar: string = '';
   userName: string = '';

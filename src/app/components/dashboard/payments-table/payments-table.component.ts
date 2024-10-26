@@ -55,7 +55,7 @@ export class PaymentsTableComponent {
     private _liveAnnouncer: LiveAnnouncer
   ) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.loadPayments();
   }
 
@@ -70,7 +70,7 @@ export class PaymentsTableComponent {
     });
   }
 
-  deletePayment(paymentId: number): void {
+  deletePayment(paymentId: number) {
     this.paymentsService.deletePayment(paymentId).subscribe(() => {
       this.dataSource.data = this.dataSource.data.filter(
         (payment) => payment.id !== paymentId
@@ -78,9 +78,8 @@ export class PaymentsTableComponent {
     });
   }
 
-  isEven(row: IPayment): boolean {
-    const index = this.dataSource.data.indexOf(row);
-    return index % 2 === 0;
+  getRowClass(index: number) {
+    return index % 2 === 0 ? 'row-even' : 'row-odd';
   }
 
   openPaymentModal(

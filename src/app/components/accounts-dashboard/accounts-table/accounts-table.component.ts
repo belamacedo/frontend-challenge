@@ -54,7 +54,7 @@ export class AccountsTableComponent {
     private _liveAnnouncer: LiveAnnouncer
   ) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.loadAccounts();
   }
 
@@ -77,9 +77,8 @@ export class AccountsTableComponent {
     });
   }
 
-  isEven(row: IAccount): boolean {
-    const index = this.dataSource.data.indexOf(row);
-    return index % 2 === 0;
+  getRowClass(index: number) {
+    return index % 2 === 0 ? 'row-even' : 'row-odd';
   }
 
   openAccountModal(
@@ -92,7 +91,6 @@ export class AccountsTableComponent {
         isEdit: isEdit,
         account: account,
       },
-      panelClass: 'custom-dialog-container',
       height: '500px',
       width: '400px',
     });
