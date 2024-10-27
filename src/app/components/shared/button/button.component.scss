@@ -1,5 +1,5 @@
 .c-button {
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
 }
 
 .mat-accent.mat-mdc-fab,
@@ -13,11 +13,11 @@
 }
 
 .mat-mdc-extended-fab {
-  padding: 0 40px;
+  padding: 0 2.5rem;
 }
 
 @media (max-width: 578px) {
   .mat-mdc-extended-fab {
-    padding: 0 60px;
+    padding: 0 3.75rem;
   }
 }

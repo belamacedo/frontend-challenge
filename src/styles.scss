@@ -4,9 +4,10 @@ body {
   --mat-datepicker-calendar-date-today-outline-color: #21c25e;
   --mdc-text-button-label-text-color: #05923b;
   --mdc-protected-button-label-text-color: #05923b;
-  --mat-text-button-horizontal-padding: 0px;
+  --mat-text-button-horizontal-padding: 0;
 }
 body {
   margin: 0;
+  font-size: 1rem;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }

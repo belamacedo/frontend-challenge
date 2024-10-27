@@ -5,7 +5,7 @@
 }
 
 .c-switch {
-  margin-top: 14px;
+  margin-top: 0.875rem;
 }
 
 .mat-accent.mat-mdc-slide-toggle {
@@ -49,18 +49,18 @@ input.example-right-align::-webkit-inner-spin-button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
 
   .image-preview {
     display: flex;
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem;
 
     img {
       width: 100px;
       height: 100px;
       border-radius: 50%;
       object-fit: cover;
-      border: 2px solid #3f51b5;
+      border: 2px solid #21c25e;
     }
 
     button {
