@@ -1,27 +1,65 @@
-# FrontendChallenge
+# Frontend Challenge
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.9.
+Este projeto é uma aplicação frontend construída em Angular, que inclui funcionalidades como login, gerenciamento de usuários e controle de pagamentos. O propósito deste projeto é demonstrar habilidades com Angular e boas práticas de desenvolvimento em uma aplicação CRUD com autenticação e manipulação de dados.
 
-## Development server
+## Funcionalidades do Projeto
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **Autenticação de usuário**: Tela de login com verificação de credenciais.
+- **Gerenciamento de contas**: Adicionar, editar e remover usuários.
+- **Controle de pagamentos**: Adicionar e visualizar registros de pagamentos.
+- **Interação com API simulada**: Uso do `JSON Server` para simular uma API RESTful.
 
-## Code scaffolding
+## Pré-requisitos
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Para rodar este projeto, você precisa ter os seguintes itens instalados:
 
-## Build
+- **Node.js** (versão 14 ou superior)
+- **npm** (geralmente incluído com o Node.js)
+- **Angular CLI** (versão 18.2 ou superior)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Instalação
 
-## Running unit tests
+1. **Clone o repositório**:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+   ```bash
+   git clone https://github.com/belamacedo/frontend-challenge.git
+   cd frontend-challenge
+   ```
 
-## Running end-to-end tests
+2. **Instale as dependências do projeto:**:
+   ```bash
+   npm install
+   ```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Executando o Projeto
 
-## Further help
+### Servidor de Desenvolvimento
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Para rodar o projeto no modo de desenvolvimento, use o seguinte comando:
+
+```bash
+   ng serve
+```
+
+Isso iniciará o servidor Angular na porta 4200 por padrão.
+
+### Servidor da API Mock
+
+O projeto utiliza o JSON Server para simular uma API. Para iniciar o servidor da API, execute:
+
+```bash
+   npm run dev:server
+```
+
+O servidor será iniciado na porta 3030 e fornecerá uma API RESTful mock que simula os dados do sistema.
+
+## Tecnologias Utilizadas
+
+O projeto foi desenvolvido usando as seguintes tecnologias e bibliotecas:
+
+- **Angular 18.2**: Framework principal para construção do frontend.
+- **Angular Material**: Conjunto de componentes de UI para Angular.
+- **RxJS**: Programação reativa e manipulação de dados assíncronos.
+- **JSON Server**: Utilizado como API mock para simular operações de backend.
+- **SASS**: Pré-processador de CSS, utilizado para facilitar a escrita de estilos com mais eficiência.
+- **ESLint**: Linter para manter o código padronizado e livre de erros.
