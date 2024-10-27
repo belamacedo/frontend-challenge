@@ -3,58 +3,68 @@
 
   <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
     <div class="container">
-      <mat-form-field appearance="outline">
-        <mat-label>Nome</mat-label>
-        <input matInput formControlName="name" />
-        <mat-error *ngIf="paymentForm.get('name')?.hasError('')">
-          O nome é obrigatório.
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Usuário</mat-label>
-        <input matInput formControlName="username" />
-        <mat-error *ngIf="paymentForm.get('username')?.hasError('')">
-          O usuário é obrigatório.
-        </mat-error>
-      </mat-form-field>
+      <div class="input-container">
+        <mat-form-field appearance="outline">
+          <mat-label>Nome</mat-label>
+          <input matInput formControlName="name" />
+          <mat-error *ngIf="paymentForm.get('name')?.hasError('required')">
+            O nome é obrigatório.
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="input-container">
+        <mat-form-field appearance="outline">
+          <mat-label>Usuário</mat-label>
+          <input matInput formControlName="username" />
+          <mat-error *ngIf="paymentForm.get('username')?.hasError('required')">
+            O usuário é obrigatório.
+          </mat-error>
+        </mat-form-field>
+      </div>
     </div>
 
     <div class="container">
-      <mat-form-field appearance="outline">
-        <mat-label>Título</mat-label>
-        <input matInput formControlName="title" />
-        <mat-error *ngIf="paymentForm.get('title')?.hasError('')">
-          O título é obrigatório.
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field floatLabel="always" appearance="outline">
-        <mat-label>Valor</mat-label>
-        <input
-          matInput
-          type="number"
-          formControlName="value"
-          class="example-right-align"
-        />
-        <span matTextPrefix>R$</span>
-        <mat-error *ngIf="paymentForm.get('value')?.hasError('')">
-          O valor é obrigatório.
-        </mat-error>
-      </mat-form-field>
+      <div class="input-container">
+        <mat-form-field appearance="outline">
+          <mat-label>Título</mat-label>
+          <input matInput formControlName="title" />
+          <mat-error *ngIf="paymentForm.get('title')?.hasError('required')">
+            O título é obrigatório.
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="input-container">
+        <mat-form-field floatLabel="always" appearance="outline">
+          <mat-label>Valor</mat-label>
+          <input
+            matInput
+            type="number"
+            formControlName="value"
+            class="example-right-align"
+          />
+          <span matTextPrefix>R$</span>
+          <mat-error *ngIf="paymentForm.get('value')?.hasError('required')">
+            O valor é obrigatório.
+          </mat-error>
+        </mat-form-field>
+      </div>
     </div>
 
     <div class="date-container">
-      <mat-form-field appearance="outline">
-        <mat-label>Escolha uma data</mat-label>
-        <input matInput [matDatepicker]="picker" formControlName="date" />
-        <mat-datepicker-toggle
-          matIconSuffix
-          [for]="picker"
-        ></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-        <mat-error *ngIf="paymentForm.get('date')?.hasError('')">
-          A data é obrigatória.
-        </mat-error>
-      </mat-form-field>
+      <div class="input-container">
+        <mat-form-field appearance="outline">
+          <mat-label>Escolha uma data</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="date" />
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="paymentForm.get('date')?.hasError('required')">
+            A data é obrigatória.
+          </mat-error>
+        </mat-form-field>
+      </div>
 
       <mat-slide-toggle matInput formControlName="isPayed" class="c-switch"
         >Pago</mat-slide-toggle

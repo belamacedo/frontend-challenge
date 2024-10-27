@@ -25,3 +25,9 @@
 .mat-mdc-card-content:last-child {
   padding-bottom: 2.813rem;
 }
+
+@media (max-width: 480px) {
+  .login-container {
+    padding: 0 40px;
+  }
+}

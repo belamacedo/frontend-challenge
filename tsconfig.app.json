@@ -4,7 +4,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/app",
-    "types": ["jest", "@types/jest"],
+    "types": ["jest"],
     "typeRoots": ["node_modules/@types"]
   },
   "files": ["src/main.ts"],
