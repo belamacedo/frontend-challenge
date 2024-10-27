@@ -5,9 +5,10 @@ Este projeto é uma aplicação frontend construída em Angular, que inclui func
 ## Funcionalidades do Projeto
 
 - **Autenticação de usuário**: Tela de login com verificação de credenciais.
-- **Gerenciamento de contas**: Adicionar, editar e remover usuários.
-- **Controle de pagamentos**: Adicionar e visualizar registros de pagamentos.
+- **Gerenciamento de contas**: Adicionar, editar, visualizar e remover usuários.
+- **Controle de pagamentos**: Adicionar, editar, visualizar e remover registros de pagamentos.
 - **Interação com API simulada**: Uso do `JSON Server` para simular uma API RESTful.
+- **Pesquisa e Ordenação de Dados**: Pesquisa de registros diretamente na tabela e opção para ordenar colunas para uma melhor visualização dos dados.
 
 ## Pré-requisitos
 
@@ -62,4 +63,3 @@ O projeto foi desenvolvido usando as seguintes tecnologias e bibliotecas:
 - **RxJS**: Programação reativa e manipulação de dados assíncronos.
 - **JSON Server**: Utilizado como API mock para simular operações de backend.
 - **SASS**: Pré-processador de CSS, utilizado para facilitar a escrita de estilos com mais eficiência.
-- **ESLint**: Linter para manter o código padronizado e livre de erros.
