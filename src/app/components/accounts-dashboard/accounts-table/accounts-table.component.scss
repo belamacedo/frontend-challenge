@@ -55,17 +55,41 @@
   --mdc-checkbox-unselected-pressed-state-layer-color: #21c25e;
 }
 
-@media (max-width: 820px) {
-  .table-wrapper {
-    display: flex;
-    flex-direction: column;
-    overflow-x: auto;
-  }
-}
-
 .container {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   width: 100%;
+}
+
+@media (max-width: 480px) {
+  .table-wrapper {
+    display: flex;
+    flex-direction: column;
+    overflow-x: auto;
+  }
+
+  .container {
+    justify-content: center;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+  .table-wrapper {
+    display: flex;
+    flex-direction: column;
+    overflow-x: auto;
+  }
+
+  .container {
+    justify-content: center;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .table-wrapper {
+    display: flex;
+    flex-direction: column;
+    overflow-x: auto;
+  }
 }

@@ -12,7 +12,6 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
 }
 
 .user-info {
@@ -41,4 +40,28 @@ header {
 .c-button {
   background-color: transparent;
   border: none;
+}
+
+// @media (max-width: 480px) {
+//   header {
+//     padding: 0.625rem 1.875rem;
+//   }
+
+//   .user-info {
+//     display: flex;
+//     flex-direction: column-reverse;
+//     gap: 5px;
+//   }
+// }
+
+@media (max-width: 767px) {
+  header {
+    padding: 0.625rem 1.875rem;
+  }
+
+  .user-info {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 5px;
+  }
 }
