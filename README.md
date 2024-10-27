@@ -63,3 +63,12 @@ O projeto foi desenvolvido usando as seguintes tecnologias e bibliotecas:
 - **RxJS**: Programação reativa e manipulação de dados assíncronos.
 - **JSON Server**: Utilizado como API mock para simular operações de backend.
 - **SASS**: Pré-processador de CSS, utilizado para facilitar a escrita de estilos com mais eficiência.
+- **Jest**: Framework de testes para garantir a qualidade e funcionalidade do código.
+
+### Obs:
+
+- Os testes foram realizados apenas no login e no componente payments-table para verificar a funcionalidade e a interação do sistema.
+- Se alguma requisição der erro, por favor reinicie o servidor json-server.
+- No modal da tela de pagamentos, o input de data precisa ser selecionado.
+- Ordenação de tabela aparece no hover do header da mesma.
+- Para logar, por favor, use o email **usuario@gmail.com** e senha **usuario**.
